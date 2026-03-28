@@ -1,4 +1,4 @@
-# machine-learning-UFMG
+
 # Machine Learning — UFMG
 ### Deep Learning Course | Prof. Marcelo A. Costa
 **Python conversion & portfolio** · [wdasilvamf](https://github.com/wdasilvamf)
