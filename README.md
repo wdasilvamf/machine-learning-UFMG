@@ -1,46 +1,46 @@
 # Machine Learning — UFMG
 ### Deep Learning Course | Prof. Marcelo A. Costa
-**Tradução R → Python & Portfólio** · [wdasilvamf](https://github.com/wdasilvamf)
+**R → Python Translation & Portfolio** · [wdasilvamf](https://github.com/wdasilvamf)
 
 ---
 
-Conversão em Python dos scripts em R do curso de Deep Learning da UFMG, com implementações **from scratch** (sem abstrações de alto nível) para consolidar o entendimento da matemática por trás de cada modelo antes de partir para frameworks.
+Python translation of the R scripts from the Deep Learning course at UFMG, with **from-scratch** implementations (no high-level abstractions) to build a solid understanding of the math behind each model before moving on to frameworks.
 
-O portfólio segue uma progressão deliberada: de modelos lineares até MLPs, regularização, Keras e, eventualmente, visão computacional aplicada à minha pesquisa de mestrado em Inovação Tecnológica (Unifesp), com foco em sistemas cognitivos e robótica social.
+The portfolio follows a deliberate progression: from linear models to MLPs, regularization, Keras, and eventually computer vision applied to my Master's research in Technological Innovation (Unifesp), focused on cognitive systems and social robotics.
 
-## Estrutura
+## Structure
 
 ```
-├── 1-Algoritmos-Base/          # Traducao fiel dos scripts do curso, um algoritmo por pasta
-│   └── NN-Nome-Algoritmo/
-│       ├── algoritmo.py        # Implementacao modular (funcoes + docstrings)
-│       ├── algoritmo.ipynb     # Teoria, hiperparametros e interpretacao de metricas
-│       └── data/                # Dataset original do script em R
+├── 1-Base-Algorithms/           # Faithful translation of the course scripts, one algorithm per folder
+│   └── NN-Algorithm-Name/
+│       ├── algorithm.py         # Modular implementation (functions + docstrings)
+│       ├── algorithm.ipynb      # Theory, hyperparameters, and metric interpretation
+│       └── data/                 # Original dataset from the R script
 │
-└── 2-Casos-Reais-Kaggle/       # Os mesmos algoritmos aplicados a datasets reais do Kaggle
-    └── Nome-do-Caso/
+└── 2-Real-World-Kaggle-Cases/   # The same algorithms applied to real Kaggle datasets
+    └── Case-Name/
 ```
 
-## 1-Algoritmos-Base
+## 1-Base-Algorithms
 
-| # | Algoritmo | Conceito-chave | Dataset | Notebook |
+| # | Algorithm | Key concept | Dataset | Notebook |
 |---|---|---|---|---|
-| 01 | Regressão Linear via Gradient Descent | Gradient descent · regra da cadeia | Salário x Experiência (curso) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/wdasilvamf/machine-learning-UFMG/blob/main/1-Algoritmos-Base/01-Regressao-Linear-Gradient-Descent/regressao_linear_gd.ipynb) |
-| 02 | MLP com Backpropagation Manual | Camada escondida · tanh · backprop | Seno ruidoso | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/wdasilvamf/machine-learning-UFMG/blob/main/1-Algoritmos-Base/02-MLP-Backpropagation-Manual/mlp_backprop_manual.ipynb) |
-| 03 | MLP com scikit-learn | Equivalente ao pacote `neuralnet` do R | Seno ruidoso / função genérica | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/wdasilvamf/machine-learning-UFMG/blob/main/1-Algoritmos-Base/03-MLP-Neuralnet-Sklearn/mlp_sklearn.ipynb) |
-| 04 | Regressão Polinomial com Ridge | Overfitting · penalidade L2 | Seno ruidoso | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/wdasilvamf/machine-learning-UFMG/blob/main/1-Algoritmos-Base/04-Regressao-Polinomial-Ridge/ridge_regularizacao.ipynb) |
-| 05 | Busca de Hiperparâmetros para MLP | Ativação x neurônios · viés-variância | Função genérica | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/wdasilvamf/machine-learning-UFMG/blob/main/1-Algoritmos-Base/05-MLP-Hyperparameter-Search/mlp_hyperparameter_search.ipynb) |
-| 🔜 | CNN (MNIST, Dogs vs Cats) | Convoluções · softmax · cross-entropy | MNIST / Dogs vs Cats | — |
-| 🔜 | Séries temporais financeiras | RNN · LSTM · GRU | dados financeiros | — |
-| 🔜 | Geração de texto e classificação | LSTM · NLP | IMDB | — |
-| 🔜 | K-fold e Validação Cruzada | Avaliação de modelos | Boston Housing / Adult | — |
-| 🔜 | Viés-Variância do Estimador | Teoria estatística | — | — |
+| 01 | Linear Regression via Gradient Descent | Gradient descent · chain rule | Salary x Experience (course) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/wdasilvamf/machine-learning-UFMG/blob/main/1-Base-Algorithms/01-Linear-Regression-Gradient-Descent/linear_regression_gd.ipynb) |
+| 02 | MLP with Manual Backpropagation | Hidden layer · tanh · backprop | Noisy sine | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/wdasilvamf/machine-learning-UFMG/blob/main/1-Base-Algorithms/02-MLP-Manual-Backpropagation/mlp_manual_backprop.ipynb) |
+| 03 | MLP with scikit-learn | Equivalent to R's `neuralnet` package | Noisy sine / generic function | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/wdasilvamf/machine-learning-UFMG/blob/main/1-Base-Algorithms/03-MLP-Sklearn/mlp_sklearn.ipynb) |
+| 04 | Polynomial Regression with Ridge | Overfitting · L2 penalty | Noisy sine | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/wdasilvamf/machine-learning-UFMG/blob/main/1-Base-Algorithms/04-Polynomial-Regression-Ridge/ridge_regularization.ipynb) |
+| 05 | MLP Hyperparameter Search | Activation x neurons · bias-variance | Generic function | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/wdasilvamf/machine-learning-UFMG/blob/main/1-Base-Algorithms/05-MLP-Hyperparameter-Search/mlp_hyperparameter_search.ipynb) |
+| 🔜 | CNN (MNIST, Dogs vs Cats) | Convolutions · softmax · cross-entropy | MNIST / Dogs vs Cats | — |
+| 🔜 | Financial time series | RNN · LSTM · GRU | Financial data | — |
+| 🔜 | Text generation and classification | LSTM · NLP | IMDB | — |
+| 🔜 | K-fold and Cross-Validation | Model evaluation | Boston Housing / Adult | — |
+| 🔜 | Bias-Variance of the Estimator | Statistical theory | — | — |
 
-## 2-Casos-Reais-Kaggle
+## 2-Real-World-Kaggle-Cases
 
-Ainda não iniciado — vai aplicar os algoritmos acima a datasets reais do Kaggle, com foco em problemas próximos da minha área de pesquisa (robótica social / interação humano-robô).
+Not started yet — will apply the algorithms above to real Kaggle datasets, focused on problems close to my research area (social robotics / human-robot interaction).
 
-## Rodando localmente
+## Running locally
 
 ```bash
 git clone https://github.com/wdasilvamf/machine-learning-UFMG.git
@@ -51,11 +51,11 @@ pip install -r requirements.txt
 jupyter lab
 ```
 
-Cada pasta de algoritmo é autocontida (`.py` + `.ipynb` + `data/`).
+Each algorithm folder is self-contained (`.py` + `.ipynb` + `data/`).
 
-## Rodando no Google Colab
+## Running on Google Colab
 
-Clique no badge "Open in Colab" de cada algoritmo na tabela acima. A primeira célula de cada notebook detecta o ambiente Colab e clona o repositório automaticamente para ter acesso ao módulo `.py` e ao dataset da pasta `data/`.
+Click the "Open in Colab" badge for any algorithm in the table above. Each notebook's first cell detects the Colab environment and automatically clones the repository to access the `.py` module and the `data/` folder's dataset.
 
 ## Tech stack
 
@@ -66,7 +66,9 @@ Clique no badge "Open in Colab" de cada algoritmo na tabela acima. A primeira c�
 ![Jupyter](https://img.shields.io/badge/Jupyter-F37626?logo=jupyter&logoColor=white)
 ![Google Colab](https://img.shields.io/badge/Google%20Colab-F9AB00?logo=googlecolab&logoColor=white)
 
-## Créditos
+## Credits
 
-*Scripts originais em R: Prof. Marcelo A. Costa — Deep Learning, UFMG*
-*Conversão para Python e portfólio: Wanderson Filho — Mestrando em Inovação Tecnológica, Unifesp*
+*Original R scripts: Prof. Marcelo A. Costa — Deep Learning, UFMG*
+*Python conversion and portfolio: Wanderson Filho — MSc candidate, Unifesp (Technological Innovation)*
+
+The original R course materials are cited above for attribution but are **not redistributed** in this repository — they are course materials, not licensed for public redistribution. Everything in this repository (Python code, notebooks, documentation) is an original implementation of the same standard, well-known algorithms (gradient descent, backpropagation, Ridge regression, etc.), not a derivative of the R source code itself.

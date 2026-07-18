@@ -1,6 +1,6 @@
-"""Busca de hiperparametros (funcao de ativacao x numero de neuronios) para um MLP.
+"""Hyperparameter search (activation function x number of neurons) for an MLP.
 
-Traduzido de: DESAFIO01_FUNCAO_MLP_keras.R e DESAFIO01_FUNCAO_MLP_neuralnet.R
+Translated from: DESAFIO01_FUNCAO_MLP_keras.R and DESAFIO01_FUNCAO_MLP_neuralnet.R
 """
 
 from itertools import product
@@ -11,7 +11,7 @@ from sklearn.neural_network import MLPRegressor
 
 
 def load_data(path: str) -> pd.DataFrame:
-    """Carrega o dataset x/y (com xgrd/ymean como funcao alvo) de um arquivo Excel."""
+    """Load the x/y dataset (with xgrd/ymean as the target function) from an Excel file."""
     return pd.read_excel(path)
 
 
@@ -34,12 +34,12 @@ def run_experiment(
     max_iter: int = 2000,
     random_state_base: int = 0,
 ) -> pd.DataFrame:
-    """Treina um MLP para cada combinacao (ativacao, neuronios, repeticao).
+    """Train an MLP for every (activation, neurons, repeat) combination.
 
-    Reproduz a estrutura de experimento dos scripts originais em R: para cada
-    configuracao, varios modelos sao treinados com inicializacao aleatoria
-    diferente, e RMSE/R2 sao registrados para avaliar tanto o desempenho
-    medio quanto a estabilidade (variancia) de cada configuracao.
+    Reproduces the original R scripts' experiment structure: for each
+    configuration, several models are trained with different random
+    initialization, and RMSE/R2 are recorded to assess both average
+    performance and stability (variance) across configurations.
     """
     rows = []
     x_2d = x.reshape(-1, 1)
@@ -71,12 +71,12 @@ def run_experiment(
 
 
 def summarize(results: pd.DataFrame) -> pd.DataFrame:
-    """Agrega o experimento por configuracao: RMSE/R2 medios e desvio-padrao do RMSE."""
+    """Aggregate the experiment by configuration: mean RMSE/R2 and RMSE std dev."""
     summary = (
         results.groupby(["activation", "hidden_size"])
-        .agg(rmse_medio=("rmse", "mean"), rmse_desvio_padrao=("rmse", "std"), r2_medio=("r_squared", "mean"))
+        .agg(mean_rmse=("rmse", "mean"), rmse_std_dev=("rmse", "std"), mean_r2=("r_squared", "mean"))
         .reset_index()
-        .sort_values("rmse_medio")
+        .sort_values("mean_rmse")
     )
     return summary
 
@@ -88,4 +88,4 @@ if __name__ == "__main__":
     results = run_experiment(
         x, y, activations=["relu", "tanh", "logistic"], hidden_sizes=[5, 10, 20], n_repeats=5
     )
-    print(summarize(results).drop(columns=[]).to_string(index=False))
+    print(summarize(results).to_string(index=False))

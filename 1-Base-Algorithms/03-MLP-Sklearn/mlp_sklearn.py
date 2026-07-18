@@ -1,6 +1,6 @@
-"""MLP ajustado com scikit-learn, equivalente ao pacote `neuralnet` do R.
+"""MLP fitted with scikit-learn, equivalent to R's `neuralnet` package.
 
-Traduzido de: Codigo01_Seno_MLP_neuralnet.R e Codigo01_FUNCAO_MLP_neuralnet.R
+Translated from: Codigo01_Seno_MLP_neuralnet.R and Codigo01_FUNCAO_MLP_neuralnet.R
 """
 
 import numpy as np
@@ -9,7 +9,7 @@ from sklearn.neural_network import MLPRegressor
 
 
 def load_data(path: str) -> pd.DataFrame:
-    """Carrega um dataset x/y (e opcionalmente xgrd/ymean) de um arquivo Excel."""
+    """Load an x/y dataset (optionally with xgrd/ymean) from an Excel file."""
     return pd.read_excel(path)
 
 
@@ -21,11 +21,12 @@ def fit_mlp(
     max_iter: int = 5000,
     random_state: int | None = 42,
 ) -> MLPRegressor:
-    """Ajusta um MLPRegressor de camada unica, equivalente a `neuralnet(hidden=c(6))`.
+    """Fit a single-hidden-layer MLPRegressor, equivalent to `neuralnet(hidden=c(6))`.
 
-    `solver="lbfgs"` e usado (em vez do default "adam") porque converge de
-    forma mais estavel e deterministica em datasets pequenos como este,
-    aproximando o comportamento do otimizador usado pelo pacote `neuralnet`.
+    `solver="lbfgs"` is used (instead of the default "adam") because it
+    converges more stably and deterministically on small datasets like this
+    one, approximating the behavior of the optimizer used by the R
+    `neuralnet` package.
     """
     model = MLPRegressor(
         hidden_layer_sizes=hidden_layer_sizes,
@@ -39,7 +40,7 @@ def fit_mlp(
 
 
 def predict(model: MLPRegressor, x: np.ndarray) -> np.ndarray:
-    """Gera predicoes do modelo treinado para um vetor de entradas x."""
+    """Generate predictions from the trained model for an input vector x."""
     return model.predict(x.reshape(-1, 1))
 
 

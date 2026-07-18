@@ -1,6 +1,6 @@
-"""Regressao linear simples via Gradient Descent, comparada a solucao analitica (OLS).
+"""Simple linear regression via gradient descent, compared to the closed-form (OLS) solution.
 
-Traduzido de: Codigo01_SalarioExperiencia_BackPropagation.R
+Translated from: Codigo01_SalarioExperiencia_BackPropagation.R
 """
 
 from dataclasses import dataclass
@@ -17,12 +17,12 @@ class GradientDescentResult:
 
 
 def load_data(path: str) -> pd.DataFrame:
-    """Carrega o dataset Salario x Experiencia de um arquivo Excel."""
+    """Load the Salary x Experience dataset from an Excel file."""
     return pd.read_excel(path)
 
 
 def fit_ols(x: np.ndarray, y: np.ndarray) -> tuple[float, float]:
-    """Ajusta a regressao linear simples pela solucao fechada de minimos quadrados."""
+    """Fit simple linear regression via the closed-form least squares solution."""
     x_design = np.column_stack([np.ones_like(x), x])
     (intercept, slope), *_ = np.linalg.lstsq(x_design, y, rcond=None)
     return intercept, slope
@@ -34,11 +34,11 @@ def fit_gradient_descent(
     learning_rate: float = 0.0001,
     n_steps: int = 10_000,
 ) -> GradientDescentResult:
-    """Ajusta a regressao linear simples via gradient descent (batch).
+    """Fit simple linear regression via (batch) gradient descent.
 
-    Reproduz o algoritmo de backpropagation manual do script original em R:
-    a cada passo, os coeficientes sao atualizados na direcao oposta ao
-    gradiente da soma dos quadrados dos erros (SSE).
+    Reproduces the manual backpropagation algorithm from the original R
+    script: at each step, the coefficients are updated in the direction
+    opposite to the gradient of the sum of squared errors (SSE).
     """
     intercept, slope = 0.0, 0.0
     sse_history = np.empty(n_steps)
@@ -64,5 +64,5 @@ if __name__ == "__main__":
     ols_intercept, ols_slope = fit_ols(x, y)
     gd_result = fit_gradient_descent(x, y)
 
-    print(f"Minimos Quadrados : intercept={ols_intercept:.4f}, slope={ols_slope:.4f}")
-    print(f"Gradient Descent  : intercept={gd_result.intercept:.4f}, slope={gd_result.slope:.4f}")
+    print(f"Least squares    : intercept={ols_intercept:.4f}, slope={ols_slope:.4f}")
+    print(f"Gradient descent : intercept={gd_result.intercept:.4f}, slope={gd_result.slope:.4f}")
